@@ -10,22 +10,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from local_settings import *
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '754y^+t0ct31g-*#(h&bo=1%uhnf6^(6&5&p9f2d!%ha(y4!+-'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -73,11 +60,6 @@ DATABASES = {
     }
 }
 
-STATICFILES_DIRS = (
-    '/home/luis/Documentos/github/shop/statics/',
-    #'C:\CantoApps\canto\canto\static',
-)
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -101,10 +83,6 @@ STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
     'authShop.backends.EmailBackend',
 )
-
-TEMPLATE_DIRS = [
-    'templates',
-]
 
 # TEMPLATE_CONTEXT_PROCESSORS = (
 #     'django.core.context_processor.request',
