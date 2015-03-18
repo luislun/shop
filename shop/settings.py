@@ -38,6 +38,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'shop.urls'
@@ -80,11 +81,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTHENTICATION_BACKENDS = (
-    'authShop.backends.EmailBackend',
-)
-
-# TEMPLATE_CONTEXT_PROCESSORS = (
-#     'django.core.context_processor.request',
-#     #'shop.context_processor.'
+# AUTHENTICATION_BACKENDS = (
+#     'authShop.backends.EmailBackend',
 # )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
+    'shop.context_processor.categories',
+)
