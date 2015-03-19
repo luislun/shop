@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import ProductFeatures
 
-# Register your models here.
+class ProductFeaturesAdmin(admin.ModelAdmin):
+    list_display = ['feature']
+
+admin.site.register( ProductFeatures, ProductFeaturesAdmin )

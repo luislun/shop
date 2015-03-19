@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class ProductFeatures(models.Model):
+    feature = models.CharField( max_length = 80 )
+
+    def __unicode__( self ):
+      return self.feature

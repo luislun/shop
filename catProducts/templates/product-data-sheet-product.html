@@ -1,5 +1,8 @@
 {% extends 'main.html' %}
 
+{% load humanize %}
+{% load i18n %}
+
 {% block header %}
     {% include 'header-logout.html' %}
 {% endblock header %}
@@ -9,7 +12,7 @@
 		<div class="row">
 		    <div class="col-md-10 col-md-offset-1">
 		        <div id="review-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-		            <h3>Add a Review</h3>
+		            <h3>{% trans "Add a Review" %}</h3>
 		            <form>
 		                <div class="form-group">
 		                    <label>Name</label>
@@ -64,20 +67,18 @@
 		                        <li><i class="fa fa-star-half-empty"></i>
 		                        </li>
 		                    </ul>   <small><a href="#" class="text-muted">based on 8 reviews</a></small>
-		                    <h3>New Glass Collection</h3>
-		                    <p class="product-info-price">$150</p>
-		                    <p class="text-smaller text-muted">Elit eleifend fringilla placerat magnis suscipit nascetur natoque augue adipiscing amet magna porttitor class elementum montes netus tortor conubia felis ligula sagittis curae ullamcorper mi non fermentum ultrices mauris porttitor</p>
+		                    <h3>{{ product.product }} <small><a href="{{ product.brand.web }}" target="_blank">{{ product.brand }}</a></small></h3>
+		                    <p class="product-info-price">${{ product.price|floatformat:2|intcomma }}</p>
+		                    <p class="text-smaller text-muted">{{ product.description }}</p>
 		                    <ul class="icon-list list-space product-info-list">
-		                        <li><i class="fa fa-check"></i>Maecenas montes</li>
-		                        <li><i class="fa fa-check"></i>Nulla ullamcorper</li>
-		                        <li><i class="fa fa-check"></i>Ac curabitur</li>
-		                        <li><i class="fa fa-check"></i>Quis quis</li>
-		                        <li><i class="fa fa-check"></i>Ut senectus</li>
+		                    	{% for feature in product.features.all %}
+		                    		<li><i class="fa fa-check"></i>{{ feature }}</li>	
+		                    	{% endfor %}
 		                    </ul>
 		                    <ul class="list-inline">
-		                        <li><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+		                        <li><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> {% trans "Add to cart" %}</a>
 		                        </li>
-		                        <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
+		                        <li><a href="#" class="btn"><i class="fa fa-star"></i> {% trans "To Wishlist" %}</a>
 		                        </li>
 		                    </ul>
 		                </div>
@@ -86,13 +87,13 @@
 		        <div class="gap"></div>
 		        <div class="tabbable">
 		            <ul class="nav nav-tabs" id="myTab">
-		                <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-pencil"></i>Desciption</a>
+		                <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-pencil"></i>{% trans "Desciption" %}</a>
 		                </li>
-		                <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-info"></i>Additional Information</a>
+		                <li><a href="#tab-2" data-toggle="tab"><i class="fa fa-info"></i>{% trans "Additional Information" %}</a>
 		                </li>
-		                <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-truck"></i>Shipping & Payment</a>
+		                <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-truck"></i>{% trans "Shipping & Payment" %}</a>
 		                </li>
-		                <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-comments"></i>Reviews</a>
+		                <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-comments"></i>{% trans "Reviews" %}</a>
 		                </li>
 		            </ul>
 		            <div class="tab-content">
@@ -330,7 +331,7 @@
 		            </div>
 		        </div>
 		        <div class="gap"></div>
-		        <h3>Related Porducts</h3>
+		        <h3>{% trans "Related Porducts" %}</h3>
 		        <div class="gap gap-mini"></div>
 		        <div class="row row-wrap">
 		            <div class="col-md-4">
