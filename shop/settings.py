@@ -30,6 +30,8 @@ INSTALLED_APPS = (
     'catProductCategories',
     'catProducts',
     'productFeatures',
+    'comments',
+    'photos',
 )
 
 MIDDLEWARE_CLASSES = (
